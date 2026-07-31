@@ -102,6 +102,11 @@ Para medição e comparação de backend, use flags que isolam variáveis:
   aponta para dentro do projeto, o diretório aparece no `git status` e o agente
   pode acabar lendo o próprio arquivo de sessão em crescimento. Isso nos custou 38
   mil tokens por rodada e um falso negativo de teste.
+- **Dois-pontos na `description` de uma skill quebra o frontmatter, e a skill é
+  ignorada em silêncio.** `description: Fecha a tarefa: testes verdes...` é YAML
+  inválido — o pi não carrega e não avisa. Use travessão, ou coloque a descrição
+  entre aspas. Confirme o carregamento com:
+  `pi -a -p "liste apenas os nomes das skills disponíveis"`
 - **Assinatura Claude Pro/Max não move o pi** sem *extra usage* habilitado. Apps de
   terceiro consomem dessa carteira separada, não dos limites do plano. Ou habilite
   extra usage, ou use API key, ou use Claude Code (first-party) para trabalho na

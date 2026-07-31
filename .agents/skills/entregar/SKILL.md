@@ -1,6 +1,6 @@
 ---
 name: entregar
-description: Fecha uma tarefa com disciplina: testes verdes, diff conferido, commit e (se autorizado) PR. Use quando a implementação estiver pronta, quando o usuário pedir para entregar, commitar, fechar a tarefa ou abrir PR.
+description: Fecha uma tarefa com disciplina — testes verdes, diff conferido, commit e (se autorizado) PR. Use quando a implementação estiver pronta, quando o usuário pedir para entregar, commitar, fechar a tarefa ou abrir PR.
 ---
 
 # Entregar
