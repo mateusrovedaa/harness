@@ -45,10 +45,12 @@ make lint       # formatação e lint
 ## Como trabalhar aqui
 
 - Antes de mudança que passe de um arquivo, escreva o plano em `PLAN.md`
-  (skill `planejar`).
-- Terminou de implementar? Rode a revisão cruzada (skill `revisar`) antes de me
-  chamar.
+  (skill `plan`).
+- Terminou de implementar? Rode a revisão cruzada (skill `cross-review`) antes de
+  me chamar.
 - Tarefas em `TODO.md`. Marque o que concluiu.
+- Skill é escrita em **inglês** — `name`, `description` e corpo. Vale para skill
+  nova e para edição das existentes; a conversa comigo continua em português.
 - Ao concluir, mostre `git diff` e o resultado dos testes — não só o resumo do que
   você acha que fez.
 
