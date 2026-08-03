@@ -1,0 +1,5 @@
+# Isolated worktrees created by scripts/worktree-new.sh
+.worktrees/
+
+# Scratch projects used to try the kit out — they are not part of it
+software/
