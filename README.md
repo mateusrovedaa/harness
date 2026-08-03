@@ -1,70 +1,71 @@
-# harness-mínimo
+# harness-minimo
 
-Kit inicial para trabalhar com agentes de código **sem depender de modelo ou de
-ferramenta fechada**. Clone, ajuste o `AGENTS.md`, comece a trabalhar.
+**English** · [Português](README.pt-br.md)
 
-## A tese
+A starter kit for working with coding agents **without depending on a model or a
+closed tool**. Clone it, adjust `AGENTS.md`, start working.
 
-O harness virou commodity. O que acumula valor é **texto versionado em git** —
-instruções, skills, procedimentos. Se o seu investimento mora em arquivos,
-trocar de motor é trocar uma linha de configuração; se mora dentro de um
-produto fechado, trocar é começar de novo.
+## The thesis
 
-| Camada | O que é | Ferramenta | Lock-in |
+The harness became a commodity. What accumulates value is **text versioned in
+git** — instructions, skills, procedures. If your investment lives in files,
+switching engines is switching one config line; if it lives inside a closed
+product, switching means starting over.
+
+| Layer | What it is | Tool | Lock-in |
 |---|---|---|---|
-| 0 — Modelo | acesso a LLM | OpenRouter, Ollama local, API direta | zero |
-| 1 — Motor | loop + ferramentas + contexto | **pi** (MIT) | baixo |
-| 2 — Distro | `AGENTS.md`, skills, scripts | **este repositório** | zero |
-| 3 — Orquestração | paralelismo, cockpit | Orca, firstmate | zero: opcional |
+| 0 — Model | LLM access | OpenRouter, local Ollama, direct API | zero |
+| 1 — Engine | loop + tools + context | **pi** (MIT) | low |
+| 2 — Distro | `AGENTS.md`, skills, scripts | **this repository** | zero |
+| 3 — Orchestration | parallelism, cockpit | Orca, firstmate | zero: optional |
 
-Comece pelas camadas 1 e 2. A camada 3 só quando rodar agentes em paralelo for
-rotina — veja [docs/pt-br/camada-3.md](docs/pt-br/camada-3.md)
-([en](docs/en/layer-3.md)).
+Start with layers 1 and 2. Layer 3 only when running agents in parallel is
+routine — see [docs/en/layer-3.md](docs/en/layer-3.md).
 
-## Comece hoje
+## Start today
 
 ```sh
-curl -fsSL https://pi.dev/install.sh | sh   # 1. o motor
-pi                                          # 2. o modelo: /login (ou: ollama serve)
-git clone https://github.com/mateusrovedaa/harness-minimo && cd harness-minimo   # 3. a distro
-$EDITOR AGENTS.md                           #    20 linhas sobre o SEU projeto bastam
-pi                                          # 4. trabalhe
+curl -fsSL https://pi.dev/install.sh | sh   # 1. the engine
+pi                                          # 2. the model: /login (or: ollama serve)
+git clone https://github.com/mateusrovedaa/harness-minimo && cd harness-minimo   # 3. the distro
+$EDITOR AGENTS.md                           #    20 lines about YOUR project is enough
+pi                                          # 4. work
 ```
 
-O modelo mental é um só: **um LLM num loop, com quatro ferramentas, lendo e
-escrevendo o seu repositório.** Nada de MCP, subagente ou plan mode no primeiro
-dia. Quando um procedimento se repetir, extraia uma skill; quando aparecer
-trabalho paralelo, `scripts/worktree-new.sh` + tmux.
+There is only one mental model: **an LLM in a loop, with four tools, reading and
+writing your repository.** No MCP, no subagents, no plan mode on day one. When a
+procedure repeats, extract a skill; when parallel work shows up,
+`scripts/worktree-new.sh` + tmux.
 
-## O que tem aqui
+## What is in here
 
 ```
-AGENTS.md                    contrato do projeto — o arquivo mais importante
-.agents/skills/plan/         escreve PLAN.md com modelo forte (plan mode = arquivo)
-.agents/skills/cross-review/ revisão cruzada com modelo de OUTRO fornecedor
-.agents/skills/ship/         testes -> diff -> commit -> PR
-scripts/worktree-new.sh      worktree isolada, zero dependência
-docs/pt-br/                  documentação em português: pi, camada 3, escolher modelo
-docs/en/                     the same docs in English
+AGENTS.md                    the project contract — the most important file
+.agents/skills/plan/         writes PLAN.md with a strong model (plan mode = a file)
+.agents/skills/cross-review/ cross-review with a model from ANOTHER vendor
+.agents/skills/ship/         tests -> diff -> commit -> PR
+scripts/worktree-new.sh      isolated worktree, zero dependencies
+docs/en/                     docs in English: pi, layer 3, choosing a model
+docs/pt-br/                  os mesmos docs em português
 ```
 
-`.agents/skills/` é a localização **cross-harness**: pi, Claude Code e firstmate
-leem todos daí. `AGENTS.md` é lido nativamente por pi, Codex e OpenCode; para o
-Claude Code, faça `ln -s AGENTS.md CLAUDE.md`.
+`.agents/skills/` is the **cross-harness** location: pi, Claude Code and
+firstmate all read from there. `AGENTS.md` is read natively by pi, Codex and
+OpenCode; for Claude Code, run `ln -s AGENTS.md CLAUDE.md`.
 
-**Skill é escrita em inglês** (`name`, `description` e corpo): instrução em
-inglês tem adesão melhor dos modelos e a skill viaja entre times e harnesses. A
-conversa com o agente continua no idioma que você preferir.
+**Instruction files are written in English** — `AGENTS.md` and every skill,
+including `name` and `description`. English instructions get better adherence
+from models, and they travel across teams and harnesses. Talking to the agent
+stays in whatever language you prefer.
 
-## A regra que vale mais que as ferramentas
+## The rule worth more than all the tools
 
-**Nunca confie no relato do agente — verifique com script que sai 0 ou 1.** Foi
-assim que pegamos um modelo declarando sucesso com resposta vazia e exit code 0,
-e uma worktree que reportava `ok: true` sem isolar nada. Método e lições em
-[docs/pt-br/escolher-modelo.md](docs/pt-br/escolher-modelo.md)
-([en](docs/en/choosing-a-model.md)).
+**Never trust the agent's report — verify with a script that exits 0 or 1.** That
+is how we caught a model claiming success with an empty response and exit code 0,
+and a worktree that reported `ok: true` while isolating nothing. Method and
+lessons in [docs/en/choosing-a-model.md](docs/en/choosing-a-model.md).
 
-## Licença
+## License
 
-Ferramentas referenciadas: pi (MIT), Orca (MIT), firstmate (ver repositório).
-Este kit: escolha a sua.
+Referenced tools: pi (MIT), Orca (MIT), firstmate (see its repository).
+This kit: pick your own.
