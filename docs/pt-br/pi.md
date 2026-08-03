@@ -34,6 +34,7 @@ Cada ausência tem substituto, e o substituto costuma ser mais simples:
 | Lista de tarefas | `TODO.md` |
 | Popup de permissão | container, ou repo git com commit frequente |
 | Bash em background | tmux, onde você vê o que está rodando |
+| Busca na web | extensão: `pi-web-access` ou `@ollama/pi-web-search` |
 
 ## O risco real, e como mitigar
 
@@ -63,6 +64,12 @@ pi --mode json -p "..."       # stream de eventos JSON, para integrar
 Dentro da sessão: `/login`, `/model`, `/tree` (voltar a qualquer ponto e
 ramificar), `Ctrl+P` (ciclar modelos favoritos).
 
+Duas settings do `~/.pi/agent/settings.json` que mudam o ritmo de trabalho:
+`followUpMode: "all"` envia todos os follow-ups enfileirados de uma vez, em
+vez do padrão `one-at-a-time` — você continua digitando as instruções
+seguintes enquanto o modelo trabalha, e elas chegam juntas. `steeringMode:
+"all"` faz o mesmo para os prompts de direcionamento.
+
 ## Pegadinhas que custaram tempo
 
 - **`--list-models` só mostra provedor com credencial configurada.** Confirme o
@@ -76,3 +83,14 @@ ramificar), `Ctrl+P` (ciclar modelos favoritos).
 - **Assinatura Claude Pro/Max não move o pi** sem *extra usage* habilitado. Ou
   habilite extra usage, ou use API key, ou use Claude Code (first-party) para
   trabalho na assinatura.
+- **Sessão longa pode cruzar faixa de preço por contexto.** Alguns provedores
+  cobram mais acima de um limiar de contexto, e loop agêntico sobe até a
+  compactação entrar. Dá para forçar a compactação a acontecer mais cedo
+  declarando um `contextWindow` menor que o limite real do provedor no
+  `~/.pi/agent/models.json`. Confira o preço atual do seu provedor para saber
+  onde a faixa começa de fato — o mecanismo é do pi, o limiar é dele.
+
+## Referência
+
+A configuração pessoal de pi do Kun, com as settings e extensões que ele usa:
+[Kun's pi agent config](https://blog.kunchenguid.com/p/kuns-pi-agent-config).

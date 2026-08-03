@@ -34,6 +34,7 @@ Every absence has a substitute, and the substitute is usually simpler:
 | Task list | `TODO.md` |
 | Permission popup | a container, or a git repo with frequent commits |
 | Background bash | tmux, where you can see what is running |
+| Web search | an extension: `pi-web-access` or `@ollama/pi-web-search` |
 
 ## The real risk, and how to mitigate it
 
@@ -63,6 +64,12 @@ pi --mode json -p "..."       # JSON event stream, for integrations
 Inside the session: `/login`, `/model`, `/tree` (go back to any point and
 branch from there), `Ctrl+P` (cycle favorite models).
 
+Two settings in `~/.pi/agent/settings.json` that change the working rhythm:
+`followUpMode: "all"` sends every queued follow-up at once instead of the
+default `one-at-a-time` — you keep typing the next instructions while the
+model works, and they all land together. `steeringMode: "all"` does the same
+for steering prompts.
+
 ## Gotchas that cost us time
 
 - **`--list-models` only shows providers with configured credentials.**
@@ -76,3 +83,15 @@ branch from there), `Ctrl+P` (cycle favorite models).
 - **A Claude Pro/Max subscription does not power pi** without *extra usage*
   enabled. Either enable extra usage, use an API key, or use Claude Code
   (first-party) for subscription work.
+- **Long sessions can cross a provider's context price tier.** Some providers
+  charge a higher rate above a context threshold, and an agentic loop drifts
+  upward until compaction kicks in. You can force compaction to happen
+  earlier by declaring a smaller `contextWindow` for the model in
+  `~/.pi/agent/models.json` than the provider's real limit. Check your
+  provider's current pricing for where the tier actually starts — the
+  mechanism is pi's, the threshold is theirs.
+
+## Reference
+
+Kun's personal pi config, with the settings and extensions they run:
+[Kun's pi agent config](https://blog.kunchenguid.com/p/kuns-pi-agent-config).
