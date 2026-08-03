@@ -1,62 +1,69 @@
 # AGENTS.md
 
-> Este é o arquivo mais importante do kit. Ele é carregado em toda sessão e é o
-> contrato de operação do projeto. Substitua o conteúdo pelo do **seu** projeto —
-> o que está aqui é gabarito comentado.
+> The most important file in this kit. It is loaded in every session and is the
+> project's operating contract. Replace this content with **your** project's —
+> what is here is a commented template.
 >
-> Lido nativamente por pi, Codex e OpenCode. Para o Claude Code: `ln -s AGENTS.md CLAUDE.md`
+> Written in English on purpose: this is instruction text the model consumes, and
+> English gets better adherence. Talk to the agent in whatever language you
+> prefer.
+>
+> Read natively by pi, Codex and OpenCode. For Claude Code: `ln -s AGENTS.md CLAUDE.md`
 
-## O projeto
+## The project
 
-<!-- Uma ou duas frases: o que é, para quem, qual o problema que resolve. -->
-<!-- O agente usa isso para decidir o que é relevante. Seja concreto. -->
+<!-- One or two sentences: what it is, who it is for, what problem it solves. -->
+<!-- The agent uses this to decide what is relevant. Be concrete. -->
 
-Projeto exemplo: API de relatórios em Python, consumida pelo painel interno.
+Example project: a Python reporting API consumed by the internal dashboard.
 
-## Como rodar e testar
+## How to run and test
 
-<!-- Comandos exatos. Isto economiza mais token que qualquer outra seção, porque
-     sem eles o agente tenta descobrir sozinho, errando algumas vezes. -->
+<!-- Exact commands. This saves more tokens than any other section, because
+     without them the agent tries to figure it out on its own, getting it
+     wrong a few times first. -->
 
 ```sh
-make setup      # dependências
-make test       # suíte completa
-make lint       # formatação e lint
+make setup      # dependencies
+make test       # full suite
+make lint       # formatting and lint
 ```
 
-## Convenções que valem neste repositório
+## Conventions that hold in this repository
 
-<!-- Só o que NÃO é dedutível do código. Não repita o que o linter já garante. -->
+<!-- Only what is NOT deducible from the code. Don't repeat what the linter
+     already enforces. -->
 
-- Migrações nunca são editadas depois de aplicadas; crie uma nova.
-- Nada de chamada de rede em teste unitário — use os fixtures em `tests/fixtures/`.
-- Mensagem de commit em português, imperativo, sem prefixo de tipo.
+- Migrations are never edited after being applied; create a new one.
+- No network calls in unit tests — use the fixtures in `tests/fixtures/`.
+- Commit messages in Portuguese, imperative, no type prefix.
 
-## Limites — o que exige minha autorização
+## Limits — what requires my authorization
 
-<!-- Escreva isto ANTES de soltar agente autônomo. O pi não tem popup de
-     permissão: este arquivo é a sua principal linha de contenção. -->
+<!-- Write this BEFORE letting an autonomous agent loose. pi has no permission
+     popup: this file is your main line of containment. -->
 
-- Não rode migração contra banco que não seja local.
-- Não altere nada em `infra/` nem `.github/workflows/`.
-- Não adicione dependência nova sem me perguntar.
-- Não faça `push`, nem abra PR, sem eu pedir.
+- Do not run migrations against any database other than local.
+- Do not change anything under `infra/` or `.github/workflows/`.
+- Do not add a new dependency without asking me.
+- Do not `push` or open a PR unless I ask.
 
-## Como trabalhar aqui
+## How to work here
 
-- Antes de mudança que passe de um arquivo, escreva o plano em `PLAN.md`
+- Before a change that spans more than one file, write the plan to `PLAN.md`
   (skill `plan`).
-- Terminou de implementar? Rode a revisão cruzada (skill `cross-review`) antes de
-  me chamar.
-- Tarefas em `TODO.md`. Marque o que concluiu.
-- Skill é escrita em **inglês** — `name`, `description` e corpo. Vale para skill
-  nova e para edição das existentes; a conversa comigo continua em português.
-- Ao concluir, mostre `git diff` e o resultado dos testes — não só o resumo do que
-  você acha que fez.
+- Done implementing? Run the cross-review (skill `cross-review`) before calling
+  me.
+- Tasks live in `TODO.md`. Check off what you finished.
+- Instruction files are written in **English** — this file and every skill,
+  including `name` and `description`. Applies to new skills and to edits of
+  existing ones.
+- When you are done, show `git diff` and the test output — not just your summary
+  of what you think you did.
 
-## Verificação
+## Verification
 
-<!-- A regra que mais evita retrabalho neste kit. -->
+<!-- The rule that prevents the most rework in this kit. -->
 
-Afirmação de conclusão precisa de evidência executada: saída de teste, `git diff`,
-comando rodado. "Corrigi e deve funcionar" não conta.
+A completion claim needs executed evidence: test output, `git diff`, a command
+that ran. "Fixed it, should work" does not count.
