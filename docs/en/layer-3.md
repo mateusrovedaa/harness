@@ -18,18 +18,18 @@ Why it: runs any terminal agent (pi, Claude Code, Codex, ...), native
 worktree per agent, no token markup, and the cockpit itself is scriptable —
 `orca agent-context` prints the command schema for agent consumption.
 
-**The gotcha that matters:** Orca classifies each project as `git` or
-`folder`, and a `folder` project **gets no worktree** — `orca worktree
-create` returns `ok: true` while handing back the primary checkout itself,
-with no error. In our tests the discriminator was having a `remote origin`
-configured, and there is no way to reclassify via the CLI afterwards.
-Configure `origin` **before** registering the repo, and confirm:
+**Gotcha:** Orca classifies each project as `git` or `folder`, and a `folder`
+project **gets no worktree** — `orca worktree create` returns `ok: true` while
+handing back the primary checkout itself, with no error. In our tests the
+discriminator was having a `remote origin` configured, and there is no way to
+reclassify via the CLI afterwards. Configure `origin` **before** registering
+the repo, and confirm:
 
 ```sh
 orca repo list --json | jq -r '.result.repos[] | "\(.kind)  \(.path)"'
 ```
 
-## firstmate — the fleet distro
+## firstmate
 
 A portable directory of instructions, skills and scripts that turns a
 terminal agent into a fleet manager: you talk to **one** agent, it

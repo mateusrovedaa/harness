@@ -1,9 +1,9 @@
-# Escolher o modelo com dado, não com opinião
+# Escolher um modelo com dados
 
-O motor é agnóstico, então a pergunta vira **qual modelo colocar atrás dele**.
-Não responda com opinião: monte meia dúzia de tarefas com verificação objetiva
-e meça. A regra central: **toda verificação é script que sai 0 ou 1 — nunca o
-relato do modelo**, que é justamente o que está sendo auditado.
+O motor é agnóstico, então a pergunta é **qual modelo colocar atrás dele**.
+Não chute: monte meia dúzia de tarefas com verificação objetiva e meça.
+A regra central: **toda verificação é script que sai 0 ou 1 — nunca o relato
+do modelo**, que é justamente o que está sendo auditado.
 
 ## As três dimensões
 
@@ -33,7 +33,7 @@ relato do modelo**, que é justamente o que está sendo auditado.
   com menos retrabalho de ferramenta para frota autônoma em volume; o mais
   rápido para trabalho interativo.
 
-## A divisão de papéis
+## Divisão de papéis
 
 | Tier de tarefa | Modelo |
 |---|---|
