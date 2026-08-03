@@ -48,3 +48,6 @@ relato do modelo**, que é justamente o que está sendo auditado.
 - Mantenha o diretório de sessão **fora** do diretório de trabalho medido:
   instrumentação dentro da fixture inflou 38 mil tokens por rodada, porque o
   agente lia o próprio arquivo de sessão em crescimento.
+- Bateria de tarefa curta não captura custo de sessão longa. Fração de cache e
+  faixa de preço por contexto só aparecem quando a sessão cresce — veja as
+  pegadinhas em [pi.md](pi.md).

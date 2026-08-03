@@ -49,3 +49,6 @@ is being audited.
 - Keep the session directory **outside** the measured working directory:
   instrumentation inside the fixture inflated 38k tokens per round, because
   the agent was reading its own growing session file.
+- A short-task battery does not capture long-session cost. Cache hit rate and
+  any context price tier only show up once sessions get long — see the
+  gotchas in [pi.md](pi.md).
