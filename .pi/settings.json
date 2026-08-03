@@ -1,0 +1,7 @@
+{
+  "packages": [
+    "npm:@ollama/pi-web-search",
+    "npm:pi-rtk",
+    "npm:@casualjim/pi-caveman"
+  ]
+}

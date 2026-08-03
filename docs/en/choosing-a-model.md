@@ -1,10 +1,9 @@
-# Choosing the model with data, not opinion
+# Choosing a model with data
 
-The engine is agnostic, so the question becomes **which model to put behind
-it**. Don't answer with opinion: build half a dozen tasks with objective
-verification and measure. The central rule: **every verification is a script
-that exits 0 or 1 — never the model's own report**, which is precisely what
-is being audited.
+The engine is agnostic, so the question is **which model to put behind it**.
+Don't guess: build half a dozen tasks with objective verification and measure.
+The central rule: **every verification is a script that exits 0 or 1 — never
+the model's own report**, which is what you are auditing.
 
 ## The three dimensions
 
@@ -34,7 +33,7 @@ is being audited.
   with less tool rework for autonomous fleets at volume; the faster one for
   interactive work.
 
-## The division of roles
+## Division of roles
 
 | Task tier | Model |
 |---|---|

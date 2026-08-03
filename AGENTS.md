@@ -1,10 +1,10 @@
 # AGENTS.md
 
-> The most important file in this kit. It is loaded in every session and is the
-> project's operating contract. Replace this content with **your** project's —
-> what is here is a commented template.
+> The most important file in this kit. Loaded in every session — the project's
+> operating contract. Replace this content with **your** project's — what is
+> here is a commented template.
 >
-> Written in English on purpose: this is instruction text the model consumes, and
+> Written in English on purpose: this is instruction text the model consumes.
 > English gets better adherence. Talk to the agent in whatever language you
 > prefer.
 >
@@ -62,8 +62,6 @@ make lint       # formatting and lint
   of what you think you did.
 
 ## Verification
-
-<!-- The rule that prevents the most rework in this kit. -->
 
 A completion claim needs executed evidence: test output, `git diff`, a command
 that ran. "Fixed it, should work" does not count.

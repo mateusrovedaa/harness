@@ -17,10 +17,10 @@ Por que ele: roda qualquer agente de terminal (pi, Claude Code, Codex, ...),
 worktree nativa por agente, sem markup de token, e o cockpit é scriptável —
 `orca agent-context` imprime o schema de comandos para consumo por agente.
 
-**A pegadinha que importa:** o Orca classifica cada projeto como `git` ou
-`folder`, e projeto `folder` **não recebe worktree** — `orca worktree create`
-retorna `ok: true` devolvendo o próprio checkout primário, sem erro. Nos nossos
-testes o discriminador foi ter `remote origin` configurado, e não há como
+**Pegadinha:** o Orca classifica cada projeto como `git` ou `folder`.
+Projeto `folder` **não recebe worktree** — `orca worktree create` retorna
+`ok: true` devolvendo o próprio checkout primário, sem erro. Nos nossos testes
+o discriminador foi ter `remote origin` configurado, e não há como
 reclassificar pelo CLI depois. Configure o `origin` **antes** de registrar o
 repo e confirme:
 
@@ -28,7 +28,7 @@ repo e confirme:
 orca repo list --json | jq -r '.result.repos[] | "\(.kind)  \(.path)"'
 ```
 
-## firstmate — a distro de frota
+## firstmate
 
 Diretório portátil de instruções, skills e scripts que transforma um agente de
 terminal em gerente de frota: você fala com **um** agente, ele despacha

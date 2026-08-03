@@ -53,7 +53,7 @@ The review must be INDEPENDENT: clean context, without the history of whoever
 wrote the code and without the justifications already given. A contaminated
 session reviews the reasoning, not the result.
 
-## Rationalizations
+## Common objections
 
 | Excuse | Reality |
 |---|---|

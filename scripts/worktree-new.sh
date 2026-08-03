@@ -3,13 +3,12 @@
 #
 #   scripts/worktree-new.sh <task-name>
 #
-# Why: two agents in the same checkout trample each other, and an agent with
-# no permission popup needs containment. A worktree is the cheapest
-# containment there is — no dependency beyond git, and disposable.
+# Two agents in the same checkout trample each other. A worktree is the
+# cheapest containment — no dependency beyond git, and disposable.
 #
-# This is firstmate's most valuable idea in 30 lines of bash. If you ever
-# adopt firstmate or Orca, they do this better (with registry and teardown);
-# until then, this does the job.
+# This is firstmate's most valuable idea in 30 lines of bash. If you adopt
+# firstmate or Orca they do this better (registry + teardown); until then,
+# this does the job.
 
 set -euo pipefail
 
