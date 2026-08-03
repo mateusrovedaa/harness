@@ -1,12 +1,12 @@
 # pi — o motor
 
-**O que é:** um harness de terminal para agentes de código. MIT, npm, escrito
-em TypeScript. Publicado em [pi.dev](https://pi.dev).
+Um harness de terminal para agentes de código. MIT, npm, TypeScript.
+[pi.dev](https://pi.dev).
 
-**Para que serve:** ser a camada de execução agnóstica de modelo — recebe a
-tarefa, gerencia contexto, chama ferramentas, controla o loop. Nada além disso.
+A camada de execução agnóstica de modelo — recebe a tarefa, gerencia contexto,
+chama ferramentas, controla o loop. Nada além disso.
 
-## Por que ele resolve o problema do lock-in
+## Lock-in
 
 O pi tem **quatro ferramentas**: `read`, `write`, `edit`, `bash`. Todo o resto
 é extensão em TypeScript ou skill em markdown. O núcleo pequeno é o que torna o
@@ -18,11 +18,11 @@ instruções são `AGENTS.md`, as skills são markdown, as sessões são JSONL.
 customizado (Ollama, vLLM, LM Studio, qualquer proxy) entra via
 `~/.pi/agent/models.json`.
 
-Bônus raro: o pi grava `usage` por mensagem no arquivo de sessão, com o custo
-em dólar já calculado — dá para medir custo real por tarefa em vez de estimar.
-É a base de [escolher-modelo.md](escolher-modelo.md).
+Bônus: o pi grava `usage` por mensagem no arquivo de sessão, com o custo em
+dólar já calculado — dá para medir custo real por tarefa em vez de estimar.
+Base de [escolher-modelo.md](escolher-modelo.md).
 
-## O que ele deliberadamente NÃO tem
+## O que ele não tem
 
 Cada ausência tem substituto, e o substituto costuma ser mais simples:
 
@@ -36,7 +36,7 @@ Cada ausência tem substituto, e o substituto costuma ser mais simples:
 | Bash em background | tmux, onde você vê o que está rodando |
 | Busca na web | extensão: `pi-web-access` ou `@ollama/pi-web-search` |
 
-## O risco real, e como mitigar
+## O risco real (e como mitigar)
 
 **Não há popup de permissão.** O agente executa `bash` e escreve arquivos sem
 pedir confirmação. Mitigação, em ordem de eficácia:
@@ -50,7 +50,7 @@ pedir confirmação. Mitigação, em ordem de eficácia:
 O mesmo vale para skills: elas podem instruir o modelo a fazer qualquer coisa e
 podem conter código executável. **Leia antes de usar skill de terceiro.**
 
-## Comandos que resolvem 90% do uso
+## Comandos que cobrem 90% do uso
 
 ```sh
 pi                            # sessão interativa
@@ -70,7 +70,7 @@ vez do padrão `one-at-a-time` — você continua digitando as instruções
 seguintes enquanto o modelo trabalha, e elas chegam juntas. `steeringMode:
 "all"` faz o mesmo para os prompts de direcionamento.
 
-## Pegadinhas que custaram tempo
+## Pegadinhas
 
 - **`--list-models` só mostra provedor com credencial configurada.** Confirme o
   ID exato do modelo *depois* de configurar a chave, antes de rodar algo longo.

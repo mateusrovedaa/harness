@@ -1,28 +1,28 @@
 # pi — the engine
 
-**What it is:** a terminal harness for coding agents. MIT, npm, written in
-TypeScript. Published at [pi.dev](https://pi.dev).
+A terminal harness for coding agents. MIT, npm, TypeScript.
+[pi.dev](https://pi.dev).
 
-**What it is for:** being the model-agnostic execution layer — it takes the
-task, manages context, calls tools, runs the loop. Nothing beyond that.
+The model-agnostic execution layer — takes the task, manages context, calls
+tools, runs the loop. Nothing beyond that.
 
-## Why it solves the lock-in problem
+## Lock-in
 
 pi has **four tools**: `read`, `write`, `edit`, `bash`. Everything else is a
-TypeScript extension or a markdown skill. The small core is what keeps the
-engine replaceable: there is no proprietary format and no hidden state — the
-instructions are `AGENTS.md`, the skills are markdown, the sessions are JSONL.
+TypeScript extension or a markdown skill. The small core keeps the engine
+replaceable: no proprietary format, no hidden state — instructions are
+`AGENTS.md`, skills are markdown, sessions are JSONL.
 
 **15+ providers**: Anthropic, OpenAI, Google, Bedrock, Groq, OpenRouter,
 **Ollama** and others. Switch models mid-session with `/model`; custom
 providers (Ollama, vLLM, LM Studio, any proxy) plug in via
 `~/.pi/agent/models.json`.
 
-A rare bonus: pi records per-message `usage` in the session file, with the
-dollar cost already computed — you can measure real cost per task instead of
-estimating. It is the basis of [choosing-a-model.md](choosing-a-model.md).
+Bonus: pi records per-message `usage` in the session file, with dollar cost
+already computed — measure real cost per task instead of estimating. Basis of
+[choosing-a-model.md](choosing-a-model.md).
 
-## What it deliberately does NOT have
+## What it does not have
 
 Every absence has a substitute, and the substitute is usually simpler:
 
@@ -36,10 +36,10 @@ Every absence has a substitute, and the substitute is usually simpler:
 | Background bash | tmux, where you can see what is running |
 | Web search | an extension: `pi-web-access` or `@ollama/pi-web-search` |
 
-## The real risk, and how to mitigate it
+## The real risk (and how to mitigate it)
 
 **There is no permission popup.** The agent runs `bash` and writes files
-without asking for confirmation. Mitigation, in order of effectiveness:
+without asking. Mitigation, in order of effectiveness:
 
 1. Always work **inside a git repository**, committing before letting the
    agent loose. `git diff` and `git checkout .` solve almost everything.
@@ -50,7 +50,7 @@ without asking for confirmation. Mitigation, in order of effectiveness:
 The same goes for skills: they can instruct the model to do anything and may
 contain executable code. **Read third-party skills before using them.**
 
-## The commands that cover 90% of usage
+## Commands that cover 90% of usage
 
 ```sh
 pi                            # interactive session
@@ -70,7 +70,7 @@ default `one-at-a-time` — you keep typing the next instructions while the
 model works, and they all land together. `steeringMode: "all"` does the same
 for steering prompts.
 
-## Gotchas that cost us time
+## Gotchas
 
 - **`--list-models` only shows providers with configured credentials.**
   Confirm the exact model ID *after* setting up the key, before a long run.

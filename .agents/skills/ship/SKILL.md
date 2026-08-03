@@ -5,8 +5,8 @@ description: "Close a task with discipline — green tests, diff read in full, c
 
 # Ship
 
-Session-scale version of firstmate's *ship* task. The point is that "done" has a
-verifiable meaning.
+Session-scale version of firstmate's *ship* task. "Done" has a verifiable
+meaning.
 
 ## Procedure
 
@@ -61,7 +61,7 @@ scripts/worktree-new.sh <task-name>
 Agents stop stepping on each other and each diff stays isolated. This is
 firstmate's most valuable idea, and it does not require firstmate.
 
-## Rationalizations
+## Common objections
 
 | Excuse | Reality |
 |---|---|

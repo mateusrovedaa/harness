@@ -8,14 +8,14 @@ description: "Write an implementation plan to PLAN.md before touching code. Use 
 Plan mode does not need to be a harness feature: a file does the job, and it stays
 in git history for review.
 
-## When to use
+## When to use it
 
 - The change touches more than one file.
 - The task statement has real ambiguity (more than one defensible reading).
 - The task is risky or hard to revert.
 
-A single-file task with a clear statement does NOT need a plan. Writing one for it
-is ceremony.
+A single-file task with a clear statement does NOT need a plan. Writing one
+for it is ceremony.
 
 ## Procedure
 
@@ -65,7 +65,7 @@ one. If the harness can switch models mid-session (`/model` in pi), plan with th
 expensive model and implement with the cheap one — the plan is what carries the
 intelligence into the next step.
 
-## Rationalizations
+## Common objections
 
 | Excuse | Reality |
 |---|---|
