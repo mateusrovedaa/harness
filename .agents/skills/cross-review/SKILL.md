@@ -21,10 +21,9 @@ the review catches the class of error the same family repeats.
 
    ```sh
    git diff HEAD | pi --provider openai --model <model> -p "$(cat <<'EOF'
-   Review this diff as a skeptical reviewer. Do not praise, do not summarize what
-   the code does. Report only problems, each with file:line and the concrete
-   failure scenario (specific input -> wrong output). If there is no real
-   problem, say so in one line.
+   Review this diff as a skeptical reviewer. Report only problems, each with
+   file:line and the concrete failure scenario (specific input -> wrong
+   output). If there is no real problem, say so in one line.
    Focus on: correctness, unhandled edge cases, swallowed errors, and changes
    outside the requested scope.
    EOF
@@ -47,9 +46,9 @@ the review catches the class of error the same family repeats.
 4. **Report** what the reviewer found, what you confirmed, and what you
    discarded, with reasons.
 
-## Why one-shot and not a session
+## Why one-shot
 
-The review must be INDEPENDENT: clean context, without the history of whoever
+The review must be independent: clean context, without the history of whoever
 wrote the code and without the justifications already given. A contaminated
 session reviews the reasoning, not the result.
 
