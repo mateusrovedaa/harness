@@ -44,6 +44,7 @@ AGENTS.md                    the project contract — the most important file
 .agents/skills/plan/         writes PLAN.md with a strong model (plan mode = a file)
 .agents/skills/cross-review/ cross-review with a model from ANOTHER vendor
 .agents/skills/ship/         tests -> diff -> commit -> PR
+.pi/settings.json            project-local extensions (npm/git packages)
 scripts/worktree-new.sh      isolated worktree, zero dependencies
 docs/en/                     docs in English: pi, layer 3, choosing a model
 docs/pt-br/                  os mesmos docs em português
@@ -52,6 +53,23 @@ docs/pt-br/                  os mesmos docs em português
 `.agents/skills/` is the **cross-harness** location: pi, Claude Code and
 firstmate all read from there. `AGENTS.md` is read natively by pi, Codex and
 OpenCode; for Claude Code, run `ln -s AGENTS.md CLAUDE.md`.
+
+### Extensions (pi)
+
+Extensions are TypeScript modules that add tools, commands, and events to pi.
+They live in `.pi/settings.json` (project) or `~/.pi/agent/extensions/`
+(global).
+
+To add an extension to the project:
+
+```sh
+pi install -l npm:@foo/bar           # npm package
+pi install -l git:github.com/user/repo  # git repository
+```
+
+The `-l` flag installs locally into the project (`.pi/npm/` or `.pi/git/`),
+and the registration goes into `.pi/settings.json` — everything versioned in
+git. Without `-l` the installation is global (`~/.pi/agent/`).
 
 **Instruction files are written in English** — `AGENTS.md` and every skill,
 including `name` and `description`. English instructions get better adherence
