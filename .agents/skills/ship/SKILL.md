@@ -10,14 +10,14 @@ meaning.
 
 ## Procedure
 
-1. **Run the verification and paste the output.** Do not paraphrase.
+1. **Run the verification and paste the output verbatim.**
 
    ```sh
    make test    # or whatever AGENTS.md defines for this project
    make lint
    ```
 
-   A red test ends the delivery. Fix it or report it — do not proceed.
+   A red test ends the delivery. Fix it or report it, then stop.
 
 2. **Read your own diff, all of it.**
 

@@ -5,9 +5,6 @@ description: "Write an implementation plan to PLAN.md before touching code. Use 
 
 # Plan before implementing
 
-Plan mode does not need to be a harness feature: a file does the job, and it stays
-in git history for review.
-
 ## When to use it
 
 - The change touches more than one file.
@@ -56,7 +53,8 @@ for it is ceremony.
    - Name consistency: files, functions, and types used in later steps must
      match what earlier steps define.
 
-4. **Show the plan and wait.** Do not start implementing in the same turn.
+4. **Show the plan and wait for approval.** Do not start implementing until the
+   user responds — the plan is a checkpoint, not a draft.
 
 ## Cost tip
 
