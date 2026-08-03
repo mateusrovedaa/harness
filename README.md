@@ -1,4 +1,4 @@
-# harness-minimo
+# Minimal Harness
 
 **English** · [Português](README.pt-br.md)
 
