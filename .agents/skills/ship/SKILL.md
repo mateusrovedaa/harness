@@ -61,6 +61,11 @@ scripts/worktree-new.sh <task-name>
 Agents stop stepping on each other and each diff stays isolated, with nothing
 beyond git.
 
+Confirm the worktree is a different path from the primary checkout before you turn
+an agent loose in it. Tooling has reported `ok: true` while handing back the
+checkout itself, and an agent that believes it is isolated writes straight into
+your working tree.
+
 ## Common objections
 
 | Excuse | Reality |

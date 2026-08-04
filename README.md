@@ -1,7 +1,5 @@
 # Minimal Harness
 
-**English** · [Português](README.pt-br.md)
-
 A starter kit for coding agents **without depending on a specific model or
 closed tool**. Clone it, adjust `AGENTS.md`, start working.
 
@@ -17,10 +15,11 @@ and you start from zero.
 | 0 — Model | LLM access | OpenRouter, local Ollama, direct API | zero |
 | 1 — Engine | loop + tools + context | **pi** (MIT) | low |
 | 2 — Distro | `AGENTS.md`, skills, scripts | **this repository** | zero |
-| 3 — Orchestration | parallelism, cockpit | Orca, firstmate | zero: optional |
+| 3 — Orchestration | parallelism, cockpit | [Orca](https://github.com/stablyai/orca), [firstmate](https://github.com/kunchenguid/firstmate) | zero: optional |
 
-Start with layers 1 and 2. Layer 3 only when running agents in parallel is
-routine — see [docs/en/layer-3.md](docs/en/layer-3.md).
+Start with layers 1 and 2, and stay there. Layer 3 earns its place only once
+running agents in parallel is routine, and `scripts/worktree-new.sh` + tmux cover
+most of it without another tool.
 
 ## Start today
 
@@ -43,6 +42,12 @@ writing your repository.** No MCP, no subagents, no plan mode on day one. When a
 procedure repeats, extract a skill; when parallel work shows up,
 `scripts/worktree-new.sh` + tmux.
 
+That is not just a preference. The SWE-bench authors' own
+[mini-swe-agent](https://github.com/swe-agent/mini-swe-agent) (MIT) gives the model
+**only bash** — fewer tools than pi has — in about 100 lines of Python, and reports
+scoring above 74% on SWE-bench Verified with it. The scaffold is not where the
+capability lives.
+
 ## What is in here
 
 ```
@@ -54,9 +59,8 @@ AGENTS.example.md            the template the setup skill fills in
 .agents/skills/cross-review/ cross-review with a model from ANOTHER vendor
 .agents/skills/ship/         tests -> diff -> commit -> PR
 .pi/settings.json            ships one extension: web search
-.pi/rtk-config.json          rtk filter tuning, inert until you install rtk
 scripts/worktree-new.sh      isolated worktree, zero dependencies
-docs/en/                     pi, layer 3, choosing a model
+docs/en/                     pi's gotchas, and choosing a model with data
 ```
 
 `.agents/skills/` is the **cross-harness** location. pi and firstmate read it
@@ -69,8 +73,8 @@ answer for. rtk and caveman are opt-in through `setup-extensions`, because they
 change how every session behaves; see
 [docs/en/pi.md](docs/en/pi.md#extensions).
 
-Instruction files are written in English: better adherence from models, and they
-travel across teams and harnesses. The operative rule lives in
+Everything here is written in English: better adherence from models, and it
+travels across teams and harnesses. The operative rule lives in
 [`AGENTS.md`](AGENTS.md). Talking to the agent stays in whatever language you
 prefer.
 

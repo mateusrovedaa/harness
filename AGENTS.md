@@ -28,7 +28,8 @@ No build and no test suite. Verification is consistency:
 git ls-files                              # the inventory the READMEs must match
 ls -l CLAUDE.md .claude/skills            # the shipped symlinks must resolve
 bash -n scripts/worktree-new.sh           # the one script must still parse
-grep -rn 'docs/pt-br' --include='*.md' .  # must be empty: that tree was dropped
+git ls-files | grep -ci 'pt.br'           # 0: no second-language files
+grep -rln 'pt-br' --exclude=AGENTS.md .   # empty: no prose or links to them either
 ```
 
 Claims about pi, Claude Code, rtk or caveman get checked against the tool before
@@ -37,16 +38,15 @@ of the last review's findings were claims that had quietly gone stale.
 
 ## Conventions that hold here
 
-- Instruction files are in English: `AGENTS.md`, `AGENTS.example.md` and every
-  `SKILL.md`, including `name` and `description`. Prose for humans is English
-  too; `README.pt-br.md` is the single translation.
+- Everything in the repository is English, with no exception: `AGENTS.md`,
+  `AGENTS.example.md`, every `SKILL.md` including `name` and `description`, the
+  README, the docs and the commits.
 - A skill's `description` is quoted. An unquoted colon breaks the frontmatter and
   pi drops the skill without saying so.
 - Every skill closes with a `Common objections` table. It is the highest-value
   structure in the kit: it names the specific rationalization the model reaches
   for, which generic advice never does.
-- Commits in English, imperative, no type prefix. Everything a reader of this
-  repository sees is English — the one exception is `README.pt-br.md`.
+- Commits in English, imperative, no type prefix.
 
 ## Where things live
 
@@ -55,7 +55,7 @@ AGENTS.md              this contract; CLAUDE.md is a symlink to it
 AGENTS.example.md      the template the setup skill fills — one source of the structure
 .agents/skills/        setup, setup-extensions, plan, cross-review, ship — pi reads here
 .pi/settings.json      ships pi-web-search only; rtk and caveman via setup-extensions
-docs/en/               pi, layer 3, choosing a model — English only
+docs/en/               pi's gotchas, choosing a model with data
 scripts/               worktree-new.sh, the only executable in the kit
 ```
 
@@ -66,7 +66,10 @@ scripts/               worktree-new.sh, the only executable in the kit
   every clone — that is my call, not a convenience.
 - Do not install rtk, caveman or any extension on this machine while working on
   the kit. Writing about them is the job; running them is not.
-- Do not reintroduce `docs/pt-br/` or a second language under `docs/`.
+- Do not reintroduce a second language anywhere. Translations doubled the edit
+  cost and drifted; the kit is English-only now.
+- Do not add a file without applying the deletion test first: if removing it makes
+  no complexity reappear elsewhere, it was surface, not substance.
 
 ## How to work here
 

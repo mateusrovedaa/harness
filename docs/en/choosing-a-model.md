@@ -5,6 +5,14 @@ Don't guess: build half a dozen tasks with objective verification and measure.
 The central rule: **every verification is a script that exits 0 or 1 — never
 the model's own report**, which is what you are auditing.
 
+Somebody already ran this experiment at scale, with the scaffold held constant.
+[mini-swe-agent](https://github.com/swe-agent/mini-swe-agent) (MIT, from the
+SWE-bench authors) is about 100 lines of Python that hand the model **only bash**,
+and the bash-only SWE-bench Verified leaderboard it powers compares models on that
+fixed scaffold, above 74% at the top. Read it as the shape of the answer, not as
+your answer: it measures one-shot patch tasks on Python repositories, which is not
+your repository or your workday.
+
 ## The three dimensions
 
 - **Cost** — the deciding metric is **cost per completed task**, not per

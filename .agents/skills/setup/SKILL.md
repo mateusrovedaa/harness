@@ -91,9 +91,9 @@ ls -l CLAUDE.md .claude/skills
 Show the generated `AGENTS.md` in full — a completion claim needs executed
 output, not your summary.
 
-Then name the leftovers. In somebody's project, `README.md`, `README.pt-br.md`,
-`docs/en/`, `AGENTS.example.md` and a stray `PLAN.md` describe the wrong product.
-List what is present and offer to remove it; delete nothing unasked.
+Then name the leftovers. In somebody's project, `README.md`, `docs/en/`,
+`AGENTS.example.md` and a stray `PLAN.md` describe the wrong product. List what is
+present and offer to remove it; delete nothing unasked.
 
 Then ask whether they want rtk or caveman. If yes, run the `setup-extensions`
 skill; if no, say it exists for later. Do not end setup without asking — nothing

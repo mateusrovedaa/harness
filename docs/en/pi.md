@@ -87,28 +87,12 @@ is global (`~/.pi/agent/`).
 
 ### What this kit ships, and what it only offers
 
-Only one extension ships registered. The other two are opt-in through the
-`setup-extensions` skill, because both change how every session behaves and one of
-them writes outside the repository.
-
-| | What it does | How it arrives |
-|---|---|---|
-| `@ollama/pi-web-search` | web search, which pi has no native answer for | ships in `.pi/settings.json` |
-| rtk | filters tool output before it reaches context | `rtk init --agent pi` |
-| caveman | terser agent output, session hooks | `pi install -l npm:@casualjim/pi-caveman` |
-
-`.pi/rtk-config.json` holds the filter tuning (source-code, build, test, git and
-lint output). It is inert without rtk installed, so it ships either way.
-
-Two caveats worth knowing before you say yes:
-
-- A **different tool** publishes as `rtk` (`reachingforthejack/rtk`). If
-  `rtk gain` errors, you have the wrong binary.
-- `@casualjim/pi-caveman` is a **pi port** of
-  [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) and touches
-  nothing outside `.pi/`. The upstream project, which is what you install for
-  Claude Code, merges hooks into `~/.claude/` instead — machine-global and not
-  versioned with your repo. Different trade, same name.
+Only `@ollama/pi-web-search` ships registered — web search is the one gap pi has
+no native answer for. rtk (filters tool output before it reaches context) and
+caveman (terser output, session hooks) are opt-in through the `setup-extensions`
+skill, which carries the per-harness commands and the two caveats that matter:
+another tool publishes under the name `rtk`, and caveman on Claude Code installs
+machine-global hooks rather than anything versioned with your repo.
 
 ## Gotchas
 
