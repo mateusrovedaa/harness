@@ -28,8 +28,9 @@ Two things to state rather than smooth over:
   `npx -y github:JuliusBrussee/caveman -- --uninstall`. The pi side carries no
   such caveat: it lands in `.pi/settings.json`, versioned with the repo.
 
-Finish with `git status --short` and `git diff .pi/`, so the user sees exactly
-what changed and what is now committed on their behalf.
+Finish with `git status --short` and `git diff .pi/`, so the user sees exactly what
+changed. In a repo with no commits yet there is nothing to diff against — show
+`.pi/settings.json` and `.pi/extensions/` instead.
 
 ## Common objections
 

@@ -72,9 +72,10 @@ for steering prompts.
 
 ## Extensions
 
-Extensions are TypeScript modules that add tools, commands and events to pi. They
-are registered in `.pi/settings.json` (project) or `~/.pi/agent/extensions/`
-(global).
+Extensions are TypeScript modules that add tools, commands and events to pi. A
+project can carry them two ways: as a package listed in `.pi/settings.json`, or as
+a file dropped into `.pi/extensions/` — which is how `rtk init --agent pi` arrives.
+The global equivalent is `~/.pi/agent/extensions/`.
 
 ```sh
 pi install -l npm:@foo/bar              # npm package

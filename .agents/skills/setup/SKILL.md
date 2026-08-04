@@ -41,17 +41,23 @@ Read the repo and propose; do not ask for what is on disk.
 State findings as a list to correct. "Commits are Portuguese, imperative, no
 prefix — right?" costs the user one word.
 
-Zero commits means the convention is undetectable: ask for it.
+Zero commits means the convention is undetectable: ask for it. This kit's own
+conventions are never the fallback — not the commit style, not the
+English-instruction rule. They belong to the kit, not to the project.
 
 ## 4. Ask what is left
 
-1. **What the project is** — one or two sentences, including what it must never
-   get wrong. That clause is what makes the agent cautious in the right place.
-2. **The limits** — propose the defaults from `AGENTS.example.md`; let the user
+1. **What the project is** — one or two sentences.
+2. **What it must never get wrong** — the clause that makes the agent cautious in
+   the right place instead of uniformly timid. Draft one from their answer, then
+   ship only what they confirm.
+3. **The limits** — propose the defaults from `AGENTS.example.md`; let the user
    cut or add. Where there is no permission popup, this is the containment.
 
-If the user cannot say what the project is, stop. An invented description loads
-in every session and is wrong.
+If the user cannot say what the project is, stop. Nothing reaches the contract
+unconfirmed: an invented line loads in every session and is wrong. Item 2 is the
+one you will most want to supply from domain knowledge — left unanswered, leave it
+out and say the contract is missing it.
 
 ## 5. Write it
 
@@ -78,9 +84,6 @@ ln -s AGENTS.md CLAUDE.md
 ln -s ../.agents/skills .claude/skills
 ```
 
-If Claude Code does not see the skills through the directory symlink, use a real
-`.claude/skills/` holding one file symlink per skill.
-
 ## 7. Report
 
 ```sh
@@ -93,7 +96,8 @@ output, not your summary.
 
 Then name the leftovers. In somebody's project, `README.md`, `docs/en/`,
 `AGENTS.example.md` and a stray `PLAN.md` describe the wrong product. List what is
-present and offer to remove it; delete nothing unasked.
+present and offer to remove it; delete nothing unasked. With zero commits there is
+no undo — say that before you remove anything.
 
 Then ask whether they want rtk or caveman. If yes, run the `setup-extensions`
 skill; if no, say it exists for later. Do not end setup without asking — nothing
@@ -110,4 +114,5 @@ else in the flow reaches that question.
 | "The marker says stock, so I replace it" | Stock plus commits is history setup did not expect. Stop and read it. |
 | "I saw the convention before the repo was re-initialized" | They deleted it deliberately. Zero commits means ask — and this kit's own convention is not a fallback. |
 | "Empty headings show the user what to fill in" | Absent is cheaper than a heading that teaches nothing. |
+| "They did not confirm the clause, but my draft is reasonable and they can adjust it later" | They will not adjust it — they will read it once and trust it. An unconfirmed line is a line you wrote about somebody else's project. Ask again or leave it out. |
 | "Setup ran, so the harness works" | Skills load on a fresh session. Say what still needs a restart. |
