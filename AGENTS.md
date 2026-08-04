@@ -45,7 +45,8 @@ of the last review's findings were claims that had quietly gone stale.
 - Every skill closes with a `Common objections` table. It is the highest-value
   structure in the kit: it names the specific rationalization the model reaches
   for, which generic advice never does.
-- Commits in Portuguese, imperative, no type prefix.
+- Commits in English, imperative, no type prefix. Everything a reader of this
+  repository sees is English — the one exception is `README.pt-br.md`.
 
 ## Where things live
 
