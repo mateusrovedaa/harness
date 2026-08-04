@@ -1,5 +1,6 @@
 # Isolated worktrees created by scripts/worktree-new.sh
 .worktrees/
 
-# Scratch projects used to try the kit out — they are not part of it
+# Scratch projects used to try the kit out — 56M of them live here right now.
+# Delete this rule only after moving that directory out of the repository.
 software/

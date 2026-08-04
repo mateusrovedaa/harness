@@ -5,8 +5,8 @@ description: "Close a task with discipline — green tests, diff read in full, c
 
 # Ship
 
-Session-scale version of firstmate's *ship* task. "Done" has a verifiable
-meaning.
+"Done" has a verifiable meaning: green tests, a diff you read in full, and a
+commit that says why.
 
 ## Procedure
 
@@ -58,8 +58,8 @@ More than one task at a time? One worktree per task:
 scripts/worktree-new.sh <task-name>
 ```
 
-Agents stop stepping on each other and each diff stays isolated. This is
-firstmate's most valuable idea, and it does not require firstmate.
+Agents stop stepping on each other and each diff stays isolated, with nothing
+beyond git.
 
 ## Common objections
 

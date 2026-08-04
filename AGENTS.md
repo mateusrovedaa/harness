@@ -1,67 +1,77 @@
 # AGENTS.md
 
-> The most important file in this kit. Loaded in every session — the project's
-> operating contract. Replace this content with **your** project's — what is
-> here is a commented template.
->
-> Written in English on purpose: this is instruction text the model consumes.
-> English gets better adherence. Talk to the agent in whatever language you
-> prefer.
->
-> Read natively by pi, Codex and OpenCode. For Claude Code: `ln -s AGENTS.md CLAUDE.md`
+<!-- The contract for THIS repository — the kit itself. Looking for the template
+     to copy into your own project? That is AGENTS.example.md. -->
 
 ## The project
 
-<!-- One or two sentences: what it is, who it is for, what problem it solves. -->
-<!-- The agent uses this to decide what is relevant. Be concrete. -->
-
-Example project: a Python reporting API consumed by the internal dashboard.
+Minimal Harness: a starter kit of instructions, skills and scripts for coding
+agents, meant to be cloned into other repositories. Everything here is
+instruction text that a model consumes, so stale or wrong prose *is* the defect —
+a claim about a harness that no longer holds sends every user of the kit down a
+wrong path.
 
 ## How to run and test
 
-<!-- Exact commands. This saves more tokens than any other section, because
-     without them the agent tries to figure it out on its own, getting it
-     wrong a few times first. -->
+No build and no test suite. Verification is consistency:
 
 ```sh
-make setup      # dependencies
-make test       # full suite
-make lint       # formatting and lint
+git ls-files                              # the inventory the READMEs must match
+ls -l CLAUDE.md .claude/skills            # the shipped symlinks must resolve
+bash -n scripts/worktree-new.sh           # the one script must still parse
+grep -rn 'docs/pt-br' --include='*.md' .  # must be empty: that tree was dropped
 ```
 
-## Conventions that hold in this repository
+Claims about pi, Claude Code, rtk or caveman get checked against the tool before
+they go into a file — `--help`, the package's own README, the real config. Three
+of the last review's findings were claims that had quietly gone stale.
 
-<!-- Only what is NOT deducible from the code. Don't repeat what the linter
-     already enforces. -->
+## Conventions that hold here
 
-- Migrations are never edited after being applied; create a new one.
-- No network calls in unit tests — use the fixtures in `tests/fixtures/`.
-- Commit messages in Portuguese, imperative, no type prefix.
+- Instruction files are in English: `AGENTS.md`, `AGENTS.example.md` and every
+  `SKILL.md`, including `name` and `description`. Prose for humans is English
+  too; `README.pt-br.md` is the single translation.
+- A skill's `description` is quoted. An unquoted colon breaks the frontmatter and
+  pi drops the skill without saying so.
+- Every skill closes with a `Common objections` table. It is the highest-value
+  structure in the kit: it names the specific rationalization the model reaches
+  for, which generic advice never does.
+- Commits in Portuguese, imperative, no type prefix.
+
+## Where things live
+
+```
+AGENTS.md              this contract; CLAUDE.md is a symlink to it
+AGENTS.example.md      the template the setup skill fills — one source of the structure
+.agents/skills/        setup, plan, cross-review, ship — pi reads here; .claude/skills points here
+.pi/settings.json      ships pi-web-search only; rtk and caveman are opt-in via the setup skill
+docs/en/               pi, layer 3, choosing a model — English only
+scripts/               worktree-new.sh, the only executable in the kit
+```
 
 ## Limits — what requires my authorization
 
-<!-- Write this BEFORE letting an autonomous agent loose. pi has no permission
-     popup: this file is your main line of containment. -->
-
-- Do not run migrations against any database other than local.
-- Do not change anything under `infra/` or `.github/workflows/`.
-- Do not add a new dependency without asking me.
-- Do not `push` or open a PR unless I ask.
+- Do not `push` or open a PR unless I ask in the same conversation.
+- Do not add a package to `.pi/settings.json`. Whatever ships there installs on
+  every clone — that is my call, not a convenience.
+- Do not install rtk, caveman or any extension on this machine while working on
+  the kit. Writing about them is the job; running them is not.
+- Do not reintroduce `docs/pt-br/` or a second language under `docs/`.
 
 ## How to work here
 
-- Before a change that spans more than one file, write the plan to `PLAN.md`
-  (skill `plan`).
+- Before a change spanning more than one file, write the plan to `PLAN.md`
+  (skill `plan`) and wait for approval.
 - Done implementing? Run the cross-review (skill `cross-review`) before calling
   me.
-- Tasks live in `TODO.md`. Check off what you finished.
-- Instruction files are written in **English** — this file and every skill,
-  including `name` and `description`. Applies to new skills and to edits of
-  existing ones.
-- When you are done, show `git diff` and the test output — not just your summary
-  of what you think you did.
+- When you are done, show `git diff` and the output of the verification commands
+  above — not your summary of what you believe you did.
 
 ## Verification
 
-A completion claim needs executed evidence: test output, `git diff`, a command
-that ran. "Fixed it, should work" does not count.
+A completion claim needs executed evidence: command output, `git diff`, a link
+actually checked. "Fixed it, should work" does not count.
+
+What cannot be verified inside the session — whether a symlink loads skills in a
+harness that has to restart first — is reported as unverified, with the fallback
+written down.

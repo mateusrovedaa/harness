@@ -37,10 +37,11 @@ if [ -e "$DEST" ]; then
   exit 1
 fi
 
-# .worktrees/ must never enter the repository
+# .worktrees/ must never enter the repository. Warn instead of editing: writing a
+# tracked file as a side effect of "create a worktree" is a surprise.
 if ! grep -qs '^\.worktrees/$' "$ROOT/.gitignore" 2>/dev/null; then
-  echo '.worktrees/' >> "$ROOT/.gitignore"
-  echo "note: added .worktrees/ to .gitignore"
+  echo "warning: .worktrees/ is not in $ROOT/.gitignore" >&2
+  echo "         add it before committing, or the worktree lands in the repo" >&2
 fi
 
 git worktree add -b "$NAME" "$DEST" >/dev/null

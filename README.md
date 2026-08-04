@@ -27,10 +27,16 @@ routine — see [docs/en/layer-3.md](docs/en/layer-3.md).
 ```sh
 curl -fsSL https://pi.dev/install.sh | sh   # 1. the engine
 pi                                          # 2. the model: /login (or: ollama serve)
-git clone https://github.com/mateusrovedaa/harness-minimo && cd harness-minimo   # 3. the distro
-$EDITOR AGENTS.md                           #    20 lines about YOUR project is enough
-pi                                          # 4. work
+git clone https://github.com/mateusrovedaa/harness my-project   # 3. the distro
+cd my-project && rm -rf .git && git init    #    your history, not the kit's
+pi                                          # 4. ask for the `setup` skill
 ```
+
+The `setup` skill interviews you and writes `AGENTS.md`: it reads your
+`Makefile`, `package.json` and `git log` to propose the commands and conventions,
+so you confirm instead of typing. Prefer doing it by hand? Copy
+`AGENTS.example.md` over `AGENTS.md` and fill it in — 20 lines about your project
+is enough.
 
 The mental model is simple: **an LLM in a loop, with four tools, reading and
 writing your repository.** No MCP, no subagents, no plan mode on day one. When a
@@ -41,40 +47,31 @@ procedure repeats, extract a skill; when parallel work shows up,
 
 ```
 AGENTS.md                    the project contract — the most important file
+AGENTS.example.md            the template the setup skill fills in
+.agents/skills/setup/        interviews you, writes AGENTS.md, wires the harness
 .agents/skills/plan/         writes PLAN.md with a strong model (plan mode = a file)
 .agents/skills/cross-review/ cross-review with a model from ANOTHER vendor
 .agents/skills/ship/         tests -> diff -> commit -> PR
-.pi/settings.json            project-local extensions (npm/git packages)
+.pi/settings.json            ships one extension: web search
+.pi/rtk-config.json          rtk filter tuning, inert until you install rtk
 scripts/worktree-new.sh      isolated worktree, zero dependencies
-docs/en/                     docs in English: pi, layer 3, choosing a model
-docs/pt-br/                  os mesmos docs em português
+docs/en/                     pi, layer 3, choosing a model
 ```
 
-`.agents/skills/` is the **cross-harness** location: pi, Claude Code and
-firstmate all read from there. `AGENTS.md` is read natively by pi, Codex and
-OpenCode; for Claude Code, run `ln -s AGENTS.md CLAUDE.md`.
+`.agents/skills/` is the **cross-harness** location. pi and firstmate read it
+directly; Claude Code reads `.claude/skills`, which ships as a symlink to it.
+`AGENTS.md` is read natively by pi, Codex and OpenCode; Claude Code reads
+`CLAUDE.md`, which also ships as a symlink. Nothing to wire by hand.
 
-### Extensions (pi)
+Only **one** extension ships registered — web search, which pi has no native
+answer for. rtk and caveman are opt-in through the `setup` skill, because they
+change how every session behaves; see
+[docs/en/pi.md](docs/en/pi.md#extensions).
 
-Extensions are TypeScript modules that add tools, commands, and events to pi.
-They live in `.pi/settings.json` (project) or `~/.pi/agent/extensions/`
-(global).
-
-To add an extension to the project:
-
-```sh
-pi install -l npm:@foo/bar           # npm package
-pi install -l git:github.com/user/repo  # git repository
-```
-
-The `-l` flag installs locally into the project (`.pi/npm/` or `.pi/git/`),
-and the registration goes into `.pi/settings.json` — everything versioned in
-git. Without `-l` the installation is global (`~/.pi/agent/`).
-
-**Instruction files are written in English** — `AGENTS.md` and every skill,
-including `name` and `description`. English instructions get better adherence
-from models, and they travel across teams and harnesses. Talking to the agent
-stays in whatever language you prefer.
+Instruction files are written in English: better adherence from models, and they
+travel across teams and harnesses. The operative rule lives in
+[`AGENTS.md`](AGENTS.md). Talking to the agent stays in whatever language you
+prefer.
 
 ## The one rule that matters
 

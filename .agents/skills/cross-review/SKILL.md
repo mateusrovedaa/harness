@@ -34,6 +34,22 @@ the review catches the class of error the same family repeats.
    the code. If the code came from an Anthropic model, review with OpenAI, and
    vice versa. A local model works for cheap review of a small diff.
 
+   Without pi, another vendor's CLI does the same one-shot — same prompt, same
+   requirement that the vendor differ from the one that wrote the code:
+
+   ```sh
+   git diff HEAD | claude -p "$PROMPT"                  # Anthropic
+   git diff HEAD | ollama run <model> "$PROMPT"          # local; `ollama list` for your tags
+   { echo "$PROMPT"; git diff HEAD; } | codex exec -     # OpenAI
+   ```
+
+   Codex is the odd one out on purpose: `codex exec "$PROMPT"` **ignores the
+   pipe** when the prompt is an argument, so the diff has to arrive on stdin via
+   `-`. Get that wrong and it reviews an empty diff, reports no problems, and
+   exits 0 — the exact false success this kit tells you not to trust. pi,
+   `claude -p` and `ollama run` all merge a piped diff with the prompt argument;
+   that was verified, not assumed.
+
 3. **Triage before acting.** A skeptical reviewer produces false positives. For
    each finding, confirm it by reading the code before changing anything. A
    finding you cannot mentally reproduce is not an edit — it is a question.

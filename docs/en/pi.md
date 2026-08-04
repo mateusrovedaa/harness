@@ -70,6 +70,46 @@ default `one-at-a-time` — you keep typing the next instructions while the
 model works, and they all land together. `steeringMode: "all"` does the same
 for steering prompts.
 
+## Extensions
+
+Extensions are TypeScript modules that add tools, commands and events to pi. They
+are registered in `.pi/settings.json` (project) or `~/.pi/agent/extensions/`
+(global).
+
+```sh
+pi install -l npm:@foo/bar              # npm package
+pi install -l git:github.com/user/repo  # git repository
+```
+
+The `-l` flag installs into the project (`.pi/npm/` or `.pi/git/`) and writes the
+registration to `.pi/settings.json` — versioned in git. Without `-l` the install
+is global (`~/.pi/agent/`).
+
+### What this kit ships, and what it only offers
+
+Only one extension ships registered. The other two are opt-in through the `setup`
+skill, because both change how every session behaves and one of them writes
+outside the repository.
+
+| | What it does | How it arrives |
+|---|---|---|
+| `@ollama/pi-web-search` | web search, which pi has no native answer for | ships in `.pi/settings.json` |
+| rtk | filters tool output before it reaches context | `rtk init --agent pi` |
+| caveman | terser agent output, session hooks | `pi install -l npm:@casualjim/pi-caveman` |
+
+`.pi/rtk-config.json` holds the filter tuning (source-code, build, test, git and
+lint output). It is inert without rtk installed, so it ships either way.
+
+Two caveats worth knowing before you say yes:
+
+- A **different tool** publishes as `rtk` (`reachingforthejack/rtk`). If
+  `rtk gain` errors, you have the wrong binary.
+- `@casualjim/pi-caveman` is a **pi port** of
+  [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) and touches
+  nothing outside `.pi/`. The upstream project, which is what you install for
+  Claude Code, merges hooks into `~/.claude/` instead — machine-global and not
+  versioned with your repo. Different trade, same name.
+
 ## Gotchas
 
 - **`--list-models` only shows providers with configured credentials.**
