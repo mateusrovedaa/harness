@@ -78,7 +78,10 @@ them all. If they reject all three, ship without the clause and say plainly that
 the contract is missing the line that makes you cautious in the right place. That
 is a real gap to report, not a formality to note.
 
-Then fill `AGENTS.example.md`, stripping the HTML comments and `Growing this file`.
+Then write `AGENTS.md`, using `AGENTS.example.md` as the template: keep its section
+order, drop its HTML comments and its `Growing this file` section. **Never write to
+the example.** It is the template and the repo holds one copy — filling it in place
+destroys it, and with no commits yet there is no undo.
 
 Write only the sections you filled. `Where things live`, `Traps` and `Do not
 touch` come from observed failure, so omit them — and omit `How to run and test`
@@ -104,17 +107,25 @@ ln -s ../.agents/skills .claude/skills
 ## 7. Report
 
 ```sh
-git status --short
+git status --short          # or say so plainly: no repository here yet
 ls -l CLAUDE.md .claude/skills
 ```
 
-Show the generated `AGENTS.md` in full — a completion claim needs executed
-output, not your summary.
+Show the generated `AGENTS.md` in full — a completion claim needs executed output,
+not your summary.
+
+Verify what setup did, and nothing else. The commands in the kit's own `AGENTS.md` —
+the worktree script parsing, the second-language grep — check the kit against
+itself and mean nothing in somebody's project. Running them there is noise
+pretending to be diligence.
 
 Then name the leftovers. In somebody's project, `README.md`, `docs/en/`,
 `AGENTS.example.md` and a stray `PLAN.md` describe the wrong product. List what is
 present and offer to remove it; delete nothing unasked. With zero commits there is
 no undo — say that before you remove anything.
+
+`AGENTS.example.md` is spent: from here on step 2 reads `custom` and never consults
+it again in this repo. Say that rather than calling it a seed for future setups.
 
 Then ask whether they want rtk or caveman. If yes, run the `setup-extensions`
 skill; if no, say it exists for later. Do not end setup without asking — nothing
