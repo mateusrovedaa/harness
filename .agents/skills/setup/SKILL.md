@@ -83,6 +83,11 @@ order, drop its HTML comments and its `Growing this file` section. **Never write
 the example.** It is the template and the repo holds one copy — filling it in place
 destroys it, and with no commits yet there is no undo.
 
+The contract you write carries **no HTML comments at all** — not the example's
+guidance, and above all never the `kit-stock-contract` marker. Keep that marker and
+step 2 reads `stock` on a configured repo, so the next run silently replaces the
+contract you just wrote.
+
 Write only the sections you filled. `Where things live`, `Traps` and `Do not
 touch` come from observed failure, so omit them — and omit `How to run and test`
 too when there is no build yet. One exception: write `Where things live` at three
@@ -92,6 +97,10 @@ count).
 
 Tell the user which sections you left out, and that a section is earned once they
 have watched the agent get the same thing wrong **twice** — once is noise.
+
+With the contract written, delete `AGENTS.example.md`. It is spent: step 2 reads
+`custom` from here on and nothing consults it again. This is the only file setup
+removes on its own — everything in step 7 is offered, never deleted.
 
 ## 6. Symlinks
 
@@ -119,13 +128,10 @@ the worktree script parsing, the second-language grep — check the kit against
 itself and mean nothing in somebody's project. Running them there is noise
 pretending to be diligence.
 
-Then name the leftovers. In somebody's project, `README.md`, `docs/en/`,
-`AGENTS.example.md` and a stray `PLAN.md` describe the wrong product. List what is
-present and offer to remove it; delete nothing unasked. With zero commits there is
-no undo — say that before you remove anything.
-
-`AGENTS.example.md` is spent: from here on step 2 reads `custom` and never consults
-it again in this repo. Say that rather than calling it a seed for future setups.
+Then name the leftovers. In somebody's project, `README.md`, `docs/en/` and a stray
+`PLAN.md` describe the wrong product. List what is present and offer to remove it;
+delete nothing unasked. With zero commits there is no undo — say that before you
+remove anything.
 
 Then ask whether they want rtk or caveman. If yes, run the `setup-extensions`
 skill; if no, say it exists for later. Do not end setup without asking — nothing
