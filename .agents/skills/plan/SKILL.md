@@ -56,6 +56,11 @@ for it is ceremony.
 4. **Show the plan and wait for approval.** Do not start implementing until the
    user responds — the plan is a checkpoint, not a draft.
 
+   Approve-or-reject is the low-bandwidth answer. `PLAN.md` is a file in git, so
+   say the other option out loud when you hand it over: the user can annotate it
+   in place — a line under a step, a question in the margin — and you re-read the
+   file. A correction on step 3 is worth more than "looks good" on all seven.
+
 ## Cost tip
 
 Planning benefits from a strong model; implementing a good plan tolerates a cheap

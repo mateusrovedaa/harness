@@ -87,9 +87,9 @@ is global (`~/.pi/agent/`).
 
 ### What this kit ships, and what it only offers
 
-Only one extension ships registered. The other two are opt-in through the `setup`
-skill, because both change how every session behaves and one of them writes
-outside the repository.
+Only one extension ships registered. The other two are opt-in through the
+`setup-extensions` skill, because both change how every session behaves and one of
+them writes outside the repository.
 
 | | What it does | How it arrives |
 |---|---|---|

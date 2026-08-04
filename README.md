@@ -49,6 +49,7 @@ procedure repeats, extract a skill; when parallel work shows up,
 AGENTS.md                    the project contract — the most important file
 AGENTS.example.md            the template the setup skill fills in
 .agents/skills/setup/        interviews you, writes AGENTS.md, wires the harness
+.agents/skills/setup-extensions/  installs rtk or caveman, per harness
 .agents/skills/plan/         writes PLAN.md with a strong model (plan mode = a file)
 .agents/skills/cross-review/ cross-review with a model from ANOTHER vendor
 .agents/skills/ship/         tests -> diff -> commit -> PR
@@ -64,7 +65,7 @@ directly; Claude Code reads `.claude/skills`, which ships as a symlink to it.
 `CLAUDE.md`, which also ships as a symlink. Nothing to wire by hand.
 
 Only **one** extension ships registered — web search, which pi has no native
-answer for. rtk and caveman are opt-in through the `setup` skill, because they
+answer for. rtk and caveman are opt-in through `setup-extensions`, because they
 change how every session behaves; see
 [docs/en/pi.md](docs/en/pi.md#extensions).
 

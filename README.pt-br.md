@@ -48,6 +48,7 @@ trabalho paralelo, `scripts/worktree-new.sh` + tmux.
 AGENTS.md                    contrato do projeto — o arquivo mais importante
 AGENTS.example.md            o template que a skill de setup preenche
 .agents/skills/setup/        te entrevista, escreve o AGENTS.md, liga o harness
+.agents/skills/setup-extensions/  instala rtk ou caveman, conforme o harness
 .agents/skills/plan/         escreve PLAN.md com modelo forte (plan mode = arquivo)
 .agents/skills/cross-review/ revisão cruzada com modelo de OUTRO fornecedor
 .agents/skills/ship/         testes -> diff -> commit -> PR
@@ -63,7 +64,7 @@ de lá; o Claude Code lê `.claude/skills`, que já vem como symlink para lá. O
 `CLAUDE.md`, que também já vem como symlink. Nada para ligar na mão.
 
 Só **uma** extensão vem registrada — busca na web, que o pi não tem nativo. rtk e
-caveman são opt-in pela skill `setup`, porque mudam o comportamento de toda
+caveman são opt-in pela `setup-extensions`, porque mudam o comportamento de toda
 sessão; veja [docs/en/pi.md](docs/en/pi.md#extensions).
 
 Arquivo de instrução é escrito em inglês: adesão melhor dos modelos, e viaja

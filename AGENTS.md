@@ -53,8 +53,8 @@ of the last review's findings were claims that had quietly gone stale.
 ```
 AGENTS.md              this contract; CLAUDE.md is a symlink to it
 AGENTS.example.md      the template the setup skill fills — one source of the structure
-.agents/skills/        setup, plan, cross-review, ship — pi reads here; .claude/skills points here
-.pi/settings.json      ships pi-web-search only; rtk and caveman are opt-in via the setup skill
+.agents/skills/        setup, setup-extensions, plan, cross-review, ship — pi reads here
+.pi/settings.json      ships pi-web-search only; rtk and caveman via setup-extensions
 docs/en/               pi, layer 3, choosing a model — English only
 scripts/               worktree-new.sh, the only executable in the kit
 ```
