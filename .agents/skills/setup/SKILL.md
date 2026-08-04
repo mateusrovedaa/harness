@@ -43,6 +43,11 @@ conventions?" — it costs the user one word instead of a paragraph.
 
 A brand-new or empty repository has nothing to detect. Say that and go to 3.
 
+The same holds signal by signal. Zero commits means the commit convention is not
+detectable — ask for it. Do not offer this kit's own convention as the proposal:
+that imports a default from an unrelated project and dresses it up as something
+you derived from the repo.
+
 ### 3. Ask only what cannot be detected
 
 Two things:
@@ -66,14 +71,33 @@ comments and the `Growing this file` section.
 `Conventions`, `Limits`, `How to work here`, `Verification`. The three optional
 sections (`Where things live`, `Traps`, `Do not touch`) are written from observed
 failure, and an empty heading is worse than an absent one. One exception: write
-`Where things live` when the tree has three or more top-level code directories,
-where the map pays off immediately.
+`Where things live` when the tree has three or more top-level **code**
+directories, where the map pays off immediately. Code means this project's source
+or tests — `.agents/`, `.claude/`, `.pi/`, `docs/` and `scripts/` are harness
+plumbing and do not count, so a fresh clone with no project code yet scores zero.
 
 Close by telling the user those sections exist in the example, and to add one
 after watching the agent get the same thing wrong twice.
 
-If `AGENTS.md` already exists and differs from the example, do not overwrite it.
-Show what differs and offer to patch named sections.
+If `AGENTS.md` already exists, decide by reading its first lines — **not** by
+comparing it against the example:
+
+```sh
+grep -qF 'kit-stock-contract' AGENTS.md && echo stock || echo custom
+```
+
+- `stock` → this is the file every clone of the kit ships with. Replace it. Say
+  that you are replacing it; do not ask permission for it.
+- `custom` → someone wrote this for the project. Do not overwrite. Show what
+  differs and offer to patch named sections.
+
+Two things that look like simplifications and are not. Comparing against
+`AGENTS.example.md` cannot decide this — the stock file always differs from the
+example, so that test blocks the one case setup exists for. And the marker stays
+an opaque sentinel rather than a readable sentence: a phrase like "the contract
+for this repository" is something a user could plausibly type into their own
+file, and a false `stock` reading destroys their work. Deleting the sentinel is
+how a user opts out of being overwritten, which the stock file says on its face.
 
 ### 5. Symlinks
 
@@ -132,5 +156,6 @@ completion claim needs executed output — not your summary of what you set up.
 | "Asking for the test command is thorough" | It is in the Makefile. Detect it, then confirm. Asking what is on disk spends the user's patience on nothing. |
 | "The README gives me the project description" | A README sells the product; the contract needs what must never break. Read it, then have the user confirm one sentence. |
 | "Empty optional headings show what to fill in" | An empty heading is context the model reads and learns nothing from. Absent is cheaper. |
+| "The AGENTS.md here differs from the example, so I must not overwrite it" | Every fresh clone ships the kit's own AGENTS.md, which always differs. Decide by the marker in its first lines, not by the comparison — otherwise you block the one case this skill exists for, and then waste a round trip asking the user something the file already told you. |
 | "Installing both extensions is more helpful" | caveman on Claude Code changes every session on the machine. Opt-in means asking, not assuming. |
 | "Setup ran, so the harness works" | The skills only load on a fresh session. Report what you created and what the user still has to confirm after restarting. |

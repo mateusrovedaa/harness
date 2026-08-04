@@ -1,7 +1,16 @@
 # AGENTS.md
 
-<!-- The contract for THIS repository — the kit itself. Looking for the template
-     to copy into your own project? That is AGENTS.example.md. -->
+<!-- kit-stock-contract
+
+     The contract for THIS repository — the kit itself. Looking for the template
+     to copy into your own project? That is AGENTS.example.md.
+
+     Reading this in a clone that is NOT the kit? Then none of it applies to your
+     project — the limits below are the kit's, not yours. Run the `setup` skill:
+     it replaces this file with your project's real contract.
+
+     Writing your own by hand instead? Delete the `kit-stock-contract` line above
+     and `setup` will leave this file alone. -->
 
 ## The project
 
