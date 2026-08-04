@@ -49,19 +49,36 @@ English-instruction rule. They belong to the kit, not to the project.
 
 1. **What the project is** — one or two sentences.
 2. **What it must never get wrong** — the clause that makes the agent cautious in
-   the right place instead of uniformly timid. Draft one from their answer, then
-   ship only what they confirm.
+   the right place instead of uniformly timid. Their answer is the raw material for
+   step 5; do not turn it into the clause yet.
 3. **The limits** — propose the defaults from `AGENTS.example.md`; let the user
    cut or add. Where there is no permission popup, this is the containment.
 
-If the user cannot say what the project is, stop. Nothing reaches the contract
-unconfirmed: an invented line loads in every session and is wrong. Item 2 is the
-one you will most want to supply from domain knowledge — left unanswered, leave it
-out and say the contract is missing it.
+If the user cannot say what the project is, stop.
 
-## 5. Write it
+## 5. Account for every line, then write
 
-Fill `AGENTS.example.md`, stripping the HTML comments and `Growing this file`.
+Before writing, account for each line you are about to put in the contract — with
+the evidence, not with the label:
+
+- **said** — quote the user's words from this conversation
+- **found** — name the command and paste the output line it came from
+- **drafted** — you wrote it
+
+No quote and no command output means `drafted`, however well you can argue for it.
+An inference drawn from something you found is `drafted` too: "package.json has
+Stripe" is found, "wrong amounts reach real statements" is drafted.
+
+Every `drafted` line is confirmed or cut. Silence is not confirmation, and a
+question answered in part leaves the rest drafted.
+
+Make confirming cheaper than omitting: offer two or three candidate
+never-get-wrong clauses built from what they said, so one word picks or rejects
+them all. If they reject all three, ship without the clause and say plainly that
+the contract is missing the line that makes you cautious in the right place. That
+is a real gap to report, not a formality to note.
+
+Then fill `AGENTS.example.md`, stripping the HTML comments and `Growing this file`.
 
 Write only the sections you filled. `Where things live`, `Traps` and `Do not
 touch` come from observed failure, so omit them — and omit `How to run and test`
