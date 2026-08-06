@@ -48,6 +48,14 @@ That is not just a preference. The SWE-bench authors' own
 scoring above 74% on SWE-bench Verified with it. The scaffold is not where the
 capability lives.
 
+The honest counter-case: Prime Intellect's
+[prime-agent](https://github.com/PrimeIntellect-ai/prime-agent) (MIT) argues that
+fixed tool schemas make the model "work around its own scaffolding instead of
+leveraging it", and puts a persistent Python REPL with programmatic sub-agents past
+the human baseline on ARC-AGI-3. Harness design can buy a great deal. It is still
+not what you buy first — you are one person with a repository, and the minimal path
+costs nothing to abandon once your work outgrows it.
+
 ## What is in here
 
 ```

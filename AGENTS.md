@@ -77,6 +77,8 @@ scripts/               worktree-new.sh, the only executable in the kit
   (skill `plan`) and wait for approval.
 - Done implementing? Run the cross-review (skill `cross-review`) before calling
   me.
+- Caught yourself getting the same thing wrong twice? Propose the line for this
+  file that would have prevented it, in the diff. Do not wait for me to notice.
 - When you are done, show `git diff` and the output of the verification commands
   above — not your summary of what you believe you did.
 

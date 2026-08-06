@@ -119,6 +119,8 @@ tests/fixtures/         recorded Stripe responses
 - Tasks live in `TODO.md`. Check off what you finish.
 - Instruction files are written in English — this file and every skill, including
   `name` and `description`.
+- Caught yourself getting the same thing wrong twice? Propose the line for this
+  file that would have prevented it, in the diff. Do not wait for me to notice.
 - When you are done, show `git diff` and the test output, not your summary of
   what you believe you did.
 
@@ -137,10 +139,14 @@ Start with four sections: **The project**, **How to run and test**, **Limits**,
 **Verification**. That is a working contract in about 20 lines, and it is where
 most of the value already is.
 
-Add an OPTIONAL section once you have watched the agent get the same thing wrong
-**twice**. Not once — once is noise. Twice is a pattern, and a pattern is worth
-spending context on. One `Traps` line written from a failure you saw beats ten
-written from imagination.
+Add an OPTIONAL section once the agent has got the same thing wrong **twice**. Not
+once — once is noise. Twice is a pattern, and a pattern is worth spending context
+on. One `Traps` line written from a failure somebody saw beats ten written from
+imagination.
+
+`How to work here` tells the agent to propose these lines itself, in the diff, so
+you review rather than notice. Reject the ones that were noise — a file that grows
+on every stumble stops being read.
 
 Past roughly 60 lines you are writing documentation instead of a contract, and
 the agent starts skimming. When it gets long the fix is usually to move a
